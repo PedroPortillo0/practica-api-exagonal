@@ -5,12 +5,10 @@ import { Appointment } from './appointment';
 export interface UserRepository {
     save(user: User): Promise<User>;
     findById(id: string): Promise<User | null>;
-    findAll(): Promise<User[]>;
     update(user: User): Promise<User | null>;
     deleteById(id: string): Promise<void>;
-
-    // Nuevo método para actualizar solo la contraseña
     updatePassword(user: User): Promise<User | null>;
+    findAll(): Promise<User[]>; // Método para obtener todos los usuarios
 }
 
 
@@ -20,6 +18,7 @@ export interface VendedorRepository {
     findAll(): Promise<Vendedor[]>;
     update(vendedor: Vendedor): Promise<Vendedor | null>;
     deleteById(id: string): Promise<void>;
+    updatePassword(vendedor: Vendedor): Promise<Vendedor | null>;
     findAll(): Promise<Vendedor[]>;
 }
 
@@ -29,5 +28,6 @@ export interface AppointmentRepository {
     findAll(): Promise<Appointment[]>;
     update(appointment: Appointment): Promise<Appointment | null>;
     deleteById(id: string): Promise<void>;
+    findAll(): Promise<Appointment[]>; // Método para obtener todos las citas
 }
 

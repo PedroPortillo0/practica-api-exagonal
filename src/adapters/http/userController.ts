@@ -37,4 +37,10 @@ export class UserController {
         const updatedUser = await this.userService.updatePassword(id, password);
         return res.status(200).json(updatedUser);
     }
+
+    // Nuevo método para obtener todos los usuarios
+    public async getAllUsers(req: Request, res: Response): Promise<Response> {
+        const users = await this.userService.getAllUsers();
+        return res.status(200).json(users);
+    }
 }

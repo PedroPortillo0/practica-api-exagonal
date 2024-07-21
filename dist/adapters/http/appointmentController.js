@@ -43,5 +43,11 @@ class AppointmentController {
             return res.status(204).send();
         });
     }
+    getAllAppointment(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const appointment = yield this.appointmentService.getAllAppointment();
+            return res.status(200).json(appointment);
+        });
+    }
 }
 exports.AppointmentController = AppointmentController;

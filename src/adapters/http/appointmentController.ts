@@ -29,4 +29,9 @@ export class AppointmentController {
         await this.appointmentService.deleteAppointment(id);
         return res.status(204).send();
     }
+
+    public async getAllAppointment(req: Request, res: Response): Promise<Response> {
+        const appointment = await this.appointmentService.getAllAppointment();
+        return res.status(200).json(appointment);
+    }
 }

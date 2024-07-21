@@ -34,5 +34,10 @@ class AppointmentService {
             return this.appointmentRepository.deleteById(id);
         });
     }
+    getAllAppointment() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.appointmentRepository.findAll();
+        });
+    }
 }
 exports.AppointmentService = AppointmentService;

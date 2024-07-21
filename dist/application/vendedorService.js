@@ -39,5 +39,16 @@ class VendedorService {
             return this.vendedorRepository.findAll();
         });
     }
+    // Nuevo método para actualizar la contraseña
+    updatePassword(id, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield this.vendedorRepository.findById(id);
+            if (!user) {
+                throw new Error('User not found');
+            }
+            user.password = password;
+            return this.vendedorRepository.updatePassword(user);
+        });
+    }
 }
 exports.VendedorService = VendedorService;

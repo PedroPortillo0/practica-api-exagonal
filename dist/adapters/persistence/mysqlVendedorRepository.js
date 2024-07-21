@@ -50,5 +50,12 @@ class MysqlVendedorRepository {
             yield this.connection.execute('DELETE FROM vendedores WHERE id = ?', [id]);
         });
     }
+    // Nuevo método para actualizar solo la contraseña
+    updatePassword(vendedor) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.connection.execute('UPDATE vendedores SET password = ? WHERE id = ?', [vendedor.password, vendedor.id]);
+            return vendedor;
+        });
+    }
 }
 exports.MysqlVendedorRepository = MysqlVendedorRepository;

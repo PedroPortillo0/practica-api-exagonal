@@ -52,5 +52,12 @@ class UserController {
             return res.status(200).json(updatedUser);
         });
     }
+    // Nuevo método para obtener todos los usuarios
+    getAllUsers(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const users = yield this.userService.getAllUsers();
+            return res.status(200).json(users);
+        });
+    }
 }
 exports.UserController = UserController;

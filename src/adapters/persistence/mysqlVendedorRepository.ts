@@ -43,4 +43,13 @@ export class MysqlVendedorRepository implements VendedorRepository {
     async deleteById(id: string): Promise<void> {
         await this.connection.execute('DELETE FROM vendedores WHERE id = ?', [id]);
     }
+
+        // Nuevo método para actualizar solo la contraseña
+        async updatePassword(vendedor: Vendedor): Promise<Vendedor | null> {
+            await this.connection.execute(
+                'UPDATE vendedores SET password = ? WHERE id = ?',
+                [vendedor.password, vendedor.id]
+            );
+            return vendedor;
+        }
 }

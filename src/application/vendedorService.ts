@@ -23,4 +23,13 @@ export class VendedorService {
     async getAllVendedores(): Promise<Vendedor[]> {
         return this.vendedorRepository.findAll();
     }
+    // Nuevo método para actualizar la contraseña
+    async updatePassword(id: string, password: string): Promise<Vendedor | null> {
+        const user = await this.vendedorRepository.findById(id);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        user.password = password;
+        return this.vendedorRepository.updatePassword(user);
+    }
 }

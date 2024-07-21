@@ -40,10 +40,11 @@ async function startServer() {
     const imageController = new ImageController(imageService);
 
     // Rutas para Usuarios (MySQL)
-    app.post('/uxsers/mysql', (req, res) => mysqlUserController.createUser(req, res));
+    app.post('/users/mysql', (req, res) => mysqlUserController.createUser(req, res));
     app.get('/users/mysql/:id', (req, res) => mysqlUserController.getUser(req, res));
     app.put('/users/mysql/:id', (req, res) => mysqlUserController.updateUser(req, res));
     app.delete('/users/mysql/:id', (req, res) => mysqlUserController.deleteUser(req, res));
+    app.get('/users/mysql', (req, res) => mysqlUserController.getAllUsers(req, res)); // mirar todos los users
     // Nueva ruta para actualizar la contraseña
     app.put('/users/mysql/:id/password', (req, res) => mysqlUserController.updatePassword(req, res));
 
@@ -52,13 +53,15 @@ async function startServer() {
     app.get('/vendedores/mysql/:id', (req, res) => mysqlVendedorController.getVendedor(req, res));
     app.put('/vendedores/mysql/:id', (req, res) => mysqlVendedorController.updateVendedor(req, res));
     app.delete('/vendedores/mysql/:id', (req, res) => mysqlVendedorController.deleteVendedor(req, res));
-    app.get('/vendedores/mysql', (req, res) => mysqlVendedorController.getAllVendedores(req, res)); // Nueva ruta agregada
+    app.get('/vendedores/mysql', (req, res) => mysqlVendedorController.getAllVendedores(req, res)); // mirar todos los vendedores
+    app.put('/vendedores/mysql/:id/password', (req, res) => mysqlUserController.updatePassword(req, res)); //actualizar contrasenia de vendedores
 
     // Rutas para Citas (MySQL)
     app.post('/appointments/mysql', (req, res) => mysqlAppointmentController.createAppointment(req, res));
     app.get('/appointments/mysql/:id', (req, res) => mysqlAppointmentController.getAppointment(req, res));
     app.put('/appointments/mysql/:id', (req, res) => mysqlAppointmentController.updateAppointment(req, res));
     app.delete('/appointments/mysql/:id', (req, res) => mysqlAppointmentController.deleteAppointment(req, res));
+    app.get('/appointments/mysql', (req, res) => mysqlAppointmentController.getAllAppointment(req, res)); // mirar todos los users
 
     // Rutas para Imágenes
     app.post('/images/upload', upload.single('file'), (req, res) => imageController.uploadImage(req, res));

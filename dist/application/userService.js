@@ -45,5 +45,11 @@ class UserService {
             return this.userRepository.updatePassword(user);
         });
     }
+    // Nuevo método para obtener todos los usuarios
+    getAllUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.userRepository.findAll();
+        });
+    }
 }
 exports.UserService = UserService;

@@ -19,4 +19,8 @@ export class AppointmentService {
     async deleteAppointment(id: string): Promise<void> {
         return this.appointmentRepository.deleteById(id);
     }
+    async getAllAppointment(): Promise<Appointment[]> {
+        return this.appointmentRepository.findAll();
+    }
 }
+

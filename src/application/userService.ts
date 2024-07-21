@@ -29,4 +29,8 @@ export class UserService {
         user.password = password;
         return this.userRepository.updatePassword(user);
     }
+    // Nuevo método para obtener todos los usuarios
+    async getAllUsers(): Promise<User[]> {
+        return this.userRepository.findAll();
+    }
 }

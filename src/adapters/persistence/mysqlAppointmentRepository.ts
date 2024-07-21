@@ -43,4 +43,6 @@ export class MysqlAppointmentRepository implements AppointmentRepository {
     async deleteById(id: string): Promise<void> {
         await this.connection.execute('DELETE FROM appointments WHERE id = ?', [id]);
     }
+
+    
 }
